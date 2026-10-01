@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIRS21 Widgets Testumgebung – Romantik Hotel Zum Lindengarten</title>
+  <meta name="description" content="Testseite zur Überprüfung von Ansicht und Funktion der DIRS21 Widgets für das Romantik Hotel Zum Lindengarten." />
+
+  <!-- Google Fonts: Manrope & Noto Serif (Match Website CI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1b382b;
+      --primary-light: #2c5945;
+      --accent-gold: #c5a059;
+      --accent-gold-light: #dfbe7d;
+      --bg-cream: #f9f8f5;
+      --surface: #ffffff;
+      --surface-variant: #f3f0ea;
+      --border-subtle: #e5dfd3;
+      --text-main: #1f2421;
+      --text-muted: #5e6660;
+      --shadow-sm: 0 2px 8px rgba(27, 56, 43, 0.06);
+      --shadow-md: 0 8px 24px rgba(27, 56, 43, 0.08);
+      --shadow-lg: 0 16px 40px rgba(27, 56, 43, 0.12);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 120px;
+    }
+
+    /* Top Bar */
+    .top-header {
+      background: linear-gradient(135deg, #13271e 0%, var(--primary) 100%);
+      color: #fff;
+      padding: 1.25rem 2rem;
+      border-bottom: 3px solid var(--accent-gold);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-md);
+    }
+
+    .top-header-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .hotel-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hotel-logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1.5px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      font-family: 'Noto Serif', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .hotel-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+
+    .hotel-sub {
+      font-size: 0.82rem;
+      color: #b8c4bd;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.4rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      backdrop-filter: blur(8px);
+    }
+
+    .status-indicator {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #eab308;
+      box-shadow: 0 0 10px #eab308;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .status-indicator.ready {
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    /* ================================================================= */
+    /* INTERACTIVE FLOATING TEST CONTROLLER BANNER                      */
+    /* ================================================================= */
+    .floating-test-banner {
+      background: linear-gradient(180deg, #ffffff 0%, #fbfaf7 100%);
+      border-bottom: 2px solid var(--accent-gold);
+      padding: 1.15rem 2rem;
+      box-shadow: 0 8px 20px rgba(27, 56, 43, 0.05);
+      position: sticky;
+      top: 73px;
+      z-index: 995;
+    }
+
+    .floating-test-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .floating-test-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: rgba(27, 56, 43, 0.08);
+      border-radius: 20px;
+      padding: 0.2rem 0.7rem;
+      width: fit-content;
+    }
+
+    .floating-mode-selector {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      background: var(--surface-variant);
+      padding: 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .mode-toggle-btn {
+      background: transparent;
+      border: none;
+      padding: 0.55rem 1.05rem;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .mode-toggle-btn:hover {
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .mode-toggle-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(27, 56, 43, 0.2);
+    }
+
+    .mode-toggle-btn.highlight {
+      position: relative;
+    }
+
+    .mode-toggle-btn.highlight::after {
+      content: 'NEU';
+      font-size: 0.62rem;
+      background: var(--accent-gold);
+      color: #fff;
+      padding: 0.1rem 0.35rem;
+      border-radius: 10px;
+      margin-left: 0.2rem;
+    }
+
+    .status-sensor-box {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .sensor-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      transition: all 0.3s ease;
+    }
+
+    .sensor-chip.idle {
+      border-color: #22c55e;
+      color: #15803d;
+      background: #f0fdf4;
+    }
+
+    .sensor-chip.scrolling {
+      border-color: #f59e0b;
+      color: #b45309;
+      background: #fffbeb;
+    }
+
+    .sensor-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .sensor-chip.idle .sensor-dot {
+      box-shadow: 0 0 8px #22c55e;
+    }
+
+    .sensor-chip.scrolling .sensor-dot {
+      box-shadow: 0 0 8px #f59e0b;
+      animation: sensorPulse 0.6s infinite alternate;
+    }
+
+    @keyframes sensorPulse {
+      0% { opacity: 0.4; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1.25); }
+    }
+
+    .sim-scroll-btn {
+      background: #ffffff;
+      border: 1px solid var(--accent-gold);
+      color: var(--primary);
+      padding: 0.5rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+
+    .sim-scroll-btn:hover {
+      background: var(--accent-gold);
+      color: #ffffff;
+    }
+
+    /* Intro Hero */
+    .intro-banner {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 2.25rem 2rem;
+    }
+
+    .intro-container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .intro-container h1 {
+      font-family: 'Noto Serif', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-container p {
+      color: var(--text-muted);
+      max-width: 850px;
+      font-size: 0.98rem;
+    }
+
+    /* Nav Filter Tabs */
+    .filter-bar {
+      max-width: 1300px;
+      margin: 2rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tab-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      background: var(--surface-variant);
+      padding: 0.35rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      padding: 0.6rem 1.15rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .tab-btn.active {
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tab-btn .count-badge {
+      font-size: 0.75rem;
+      background: rgba(27, 56, 43, 0.1);
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+    }
+
+    .tab-btn.active .count-badge {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Main Container */
+    .main-content {
+      max-width: 1300px;
+      margin: 2rem auto 4rem;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* Widget Card */
+    .widget-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .widget-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: #d1c8b8;
+    }
+
+    .widget-header {
+      padding: 1.5rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      background: #faf9f6;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .widget-title-area {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .widget-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .widget-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.35rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .widget-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .code-pill {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      background: #252b27;
+      color: #79c0ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .widget-body {
+      padding: 2rem;
+      min-height: 180px;
+      position: relative;
+    }
+
+    /* Embedded Widget Container Styling */
+    .d21-render-box {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      border: 1px dashed transparent;
+      transition: all 0.3s ease;
+    }
+
+    .d21-render-box.relocated-notice {
+      border-color: var(--accent-gold);
+      background: rgba(197, 160, 89, 0.05);
+      padding: 2rem;
+      text-align: center;
+      border-radius: var(--radius-md);
+    }
+
+    /* Code & Config Details Box */
+    .widget-footer {
+      padding: 1.25rem 2rem;
+      background: #faf9f6;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .snippet-box {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: #24292f;
+      background: #ffffff;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      user-select: all;
+    }
+
+    .copy-btn {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Diagnostic panel */
+    .diag-drawer {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .diag-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .diag-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .diag-item {
+      background: var(--surface-variant);
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent-gold);
+      font-size: 0.85rem;
+    }
+
+    .diag-item strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+
+    /* ================================================================= */
+    /* 📍 NEUER FAVORIT: RECHTS MITTIG (FLOATING SIDE WIDGET)            */
+    /* ================================================================= */
+    #floating-side-container {
+      position: fixed;
+      right: 24px;
+      top: calc(50% + 40px); /* Ein kleines Stück nach unten versetzt */
+      transform: translateY(-50%) translateX(0);
+      width: min(350px, calc(100vw - 32px));
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--accent-gold);
+      border-radius: 22px;
+      box-shadow: 0 18px 50px rgba(19, 39, 30, 0.24), 0 0 25px rgba(197, 160, 89, 0.22);
+      z-index: 9985;
+      padding: 1.15rem 1.25rem 1rem;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.35s ease,
+                  visibility 0.35s;
+      overflow: visible !important;
+      display: block; /* Active by default */
+    }
+
+    /* Scroll Hide: sanft nach rechts aus dem Bildschirm herausfahren */
+    #floating-side-container.is-scrolling {
+      transform: translateY(-50%) translateX(calc(100% + 40px));
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* Idle Show: sanft von rechts wieder hereingleiten */
+    #floating-side-container.is-idle {
+      transform: translateY(-50%) translateX(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .side-widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(229, 223, 211, 0.85);
+    }
+
+    .side-widget-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .side-logo-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(197, 160, 89, 0.15);
+      border: 1px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold);
+      font-family: 'Noto Serif', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .side-widget-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+
+    .side-widget-sub {
+      font-size: 0.72rem;
+      color: #8c6a28;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .side-trust-row {
+      margin-top: 0.85rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(229, 223, 211, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .side-trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .side-trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+    }
+
+
+
+    /* ================================================================= */
+    /* OPTION B: SCHWEBENDE BOTTOM-DOCK-BAR STYLES                       */
+    /* ================================================================= */
+    #floating-dock-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(0);
+      width: min(980px, calc(100vw - 32px));
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid var(--accent-gold);
+      border-radius: 22px;
+      box-shadow: 0 20px 60px rgba(19, 39, 30, 0.26), 0 2px 10px rgba(0, 0, 0, 0.05);
+      z-index: 9980;
+      padding: 12px 18px 16px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.35s ease,
+                  visibility 0.35s;
+      overflow: visible !important;
+      display: none;
+    }
+
+    #floating-dock-container.is-scrolling {
+      transform: translateX(-50%) translateY(140px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #floating-dock-container.is-idle {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .dock-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(229, 223, 211, 0.7);
+    }
+
+    .dock-branding {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .dock-gold-badge {
+      background: rgba(197, 160, 89, 0.18);
+      border: 1px solid var(--accent-gold);
+      color: #8c6a28;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .dock-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .dock-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.2rem;
+      border-radius: 50%;
+      transition: color 0.2s;
+    }
+
+    .dock-close-btn:hover {
+      color: var(--primary);
+    }
+
+
+
+    /* ================================================================= */
+    /* OPTION C: SCHWEBENDER MINI-TRIGGER (PILL) & DRAWER                */
+    /* ================================================================= */
+    #floating-pill-trigger {
+      position: fixed;
+      bottom: 24px;
+      right: 28px;
+      z-index: 9970;
+      background: linear-gradient(135deg, #13271e 0%, var(--primary) 100%);
+      border: 2px solid var(--accent-gold);
+      color: #ffffff;
+      padding: 0.85rem 1.45rem;
+      border-radius: 50px;
+      box-shadow: 0 12px 36px rgba(27, 56, 43, 0.35), 0 0 20px rgba(197, 160, 89, 0.3);
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.35s ease,
+                  box-shadow 0.25s ease;
+    }
+
+    #floating-pill-trigger:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 42px rgba(27, 56, 43, 0.45), 0 0 28px rgba(197, 160, 89, 0.5);
+      background: linear-gradient(135deg, #183327 0%, var(--primary-light) 100%);
+    }
+
+    #floating-pill-trigger.is-scrolling {
+      transform: translateY(90px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    #floating-pill-trigger.is-idle {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .pill-pulse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      box-shadow: 0 0 10px var(--accent-gold);
+      animation: goldPulse 2s infinite;
+    }
+
+    @keyframes goldPulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(197, 160, 89, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
+    }
+
+    .pill-tag-badge {
+      background: rgba(197, 160, 89, 0.25);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold-light);
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* DRAWER / MODAL POPUP FOR OPTION C */
+    #floating-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(19, 39, 30, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 10005;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #floating-drawer-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .floating-drawer-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 24px 70px rgba(19, 39, 30, 0.45);
+      max-width: 920px;
+      width: 100%;
+      padding: 2rem;
+      position: relative;
+      transform: translateY(35px) scale(0.96);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #floating-drawer-backdrop.open .floating-drawer-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1rem;
+    }
+
+    .drawer-title-area h3 {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.45rem;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .drawer-title-area p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .drawer-close-btn {
+      background: var(--surface-variant);
+      border: 1px solid var(--border-subtle);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .drawer-close-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .top-header { padding: 1rem; }
+      .floating-test-banner { padding: 0.85rem 1rem; top: 68px; }
+      .floating-test-inner { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+      .floating-mode-selector { justify-content: center; }
+      .status-sensor-box { justify-content: center; }
+      .intro-banner { padding: 1.5rem 1rem; }
+      .filter-bar { padding: 0 1rem; }
+      .main-content { padding: 0 1rem; }
+      .widget-header { padding: 1.25rem 1rem; }
+      .widget-body { padding: 1.25rem 1rem; }
+      
+      #floating-side-container {
+        top: auto;
+        bottom: 16px;
+        right: 50%;
+        transform: translateX(50%) translateY(0);
+        width: calc(100vw - 24px);
+      }
+      #floating-side-container.is-scrolling {
+        transform: translateX(50%) translateY(140px);
+      }
+      #floating-side-container.is-idle {
+        transform: translateX(50%) translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Brand Navigation -->
+  <header class="top-header">
+    <div class="top-header-inner">
+      <div class="hotel-brand">
+        <div class="hotel-logo-badge">ZL</div>
+        <div>
+          <div class="hotel-title">Romantik Hotel Zum Lindengarten</div>
+          <div class="hotel-sub">DIRS21 Cockpit Integration – Testumgebung</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:0.75rem;">
+        <span class="status-badge">
+          <span class="status-indicator" id="sdkStatusDot"></span>
+          <span id="sdkStatusText">DIRS21 SDK initialisiert...</span>
+        </span>
+        <button onclick="window.location.reload()" class="copy-btn" style="color:#fff; background:rgba(255,255,255,0.15); border-color:rgba(255,255,255,0.3);">
+          ↻ Aktualisieren
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================================================================= -->
+  <!-- FLOATING PROTOTYPE SWITCHER BANNER                                -->
+  <!-- ================================================================= -->
+  <section class="floating-test-banner" id="testSwitcherBanner">
+    <div class="floating-test-inner">
+      <div class="floating-test-info">
+        <span class="pill-tag">✨ Ihr Wunsch-Layout</span>
+        <h2 style="font-family: 'Noto Serif', serif; font-size: 1.15rem; color: var(--primary); font-weight: 700; margin: 0.15rem 0;">
+          QuickBook Rechts-Mittig &bull; Scroll-Erkennung &bull; Kalender-Fläche
+        </h2>
+        <p style="font-size: 0.84rem; color: var(--text-muted);">
+          Gleitet beim Scrollen zur Seite weg &bull; erscheint bei Stillstand &bull; Kalender öffnet sauber nach links
+        </p>
+      </div>
+
+      <div class="floating-mode-selector">
+        <button class="mode-toggle-btn active highlight" id="btn-mode-side" onclick="setFloatingMode('side')">
+          <span>📍</span> Rechts-Mittig (Favorit)
+        </button>
+        <button class="mode-toggle-btn" id="btn-mode-dock" onclick="setFloatingMode('dock')">
+          <span>🚤</span> Option B: Bottom-Dock
+        </button>
+        <button class="mode-toggle-btn" id="btn-mode-pill" onclick="setFloatingMode('pill')">
+          <span>🛎️</span> Option C: Mini-Pill
+        </button>
+        <button class="mode-toggle-btn" id="btn-mode-static" onclick="setFloatingMode('static')">
+          <span>📄</span> Statisch
+        </button>
+      </div>
+
+      <div class="status-sensor-box">
+        <div class="sensor-chip idle" id="scrollStatusChip">
+          <span class="sensor-dot"></span>
+          <span id="scrollStatusText">Seite steht still (Widget da)</span>
+        </div>
+        <button class="sim-scroll-btn" onclick="simulateScroll()" title="Simuliert ein sanftes Scrollen, um das Aus- und Einblenden live zu beobachten">
+          <span>⬇️</span> Scroll-Test
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro Hero -->
+  <section class="intro-banner">
+    <div class="intro-container">
+      <span class="pill-tag">DIRS21 Widget Playground</span>
+      <h1>Interaktive Widget-Vorschau &amp; Funktionsprüfung</h1>
+      <p>
+        Auf dieser Testseite sind die 4 Widgets aus Ihrem DIRS21-Cockpit live eingebunden.
+        Sie können Aussehen, Buchungsfunktionen, Verfügbarkeiten und die Interaktion mit dem DIRS21-Buchungssystem direkt testen.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Navigation Tabs -->
+  <div class="filter-bar">
+    <div class="tab-group" id="mainTabGroup">
+      <button class="tab-btn active" onclick="switchFilter('all', this)">
+        Alle Widgets <span class="count-badge">4</span>
+      </button>
+      <button class="tab-btn" onclick="switchFilter('quickbook', this)">
+        1. QuickBook (Schnellbuchung)
+      </button>
+      <button class="tab-btn" onclick="switchFilter('calendar', this)">
+        2. Verfügbarkeitskalender
+      </button>
+      <button class="tab-btn" onclick="switchFilter('roomlist', this)">
+        3. Zimmerliste
+      </button>
+      <button class="tab-btn" onclick="switchFilter('packagelist', this)">
+        4. Angebotsliste
+      </button>
+    </div>
+
+    <div>
+      <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+        Mandanten-UUID: <code class="code-pill">7c9366f5-d53f-469f-a694-64492ca05e97</code>
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Content Areas -->
+  <main class="main-content">
+
+    <!-- ========================================== -->
+    <!-- WIDGET 1: QUICKBOOK (SCHNELLBUCHUNG)       -->
+    <!-- ========================================== -->
+    <section class="widget-card" id="card-quickbook" data-widget="quickbook">
+      <div class="widget-header">
+        <div class="widget-title-area">
+          <div class="widget-icon">⚡</div>
+          <div>
+            <h2 class="widget-title">1. QuickBook (Schnellbuchungsleiste)</h2>
+            <p class="widget-desc">
+              Kompakte Buchungsleiste mit Anreise-, Abreise- und Personenauswahl zur direkten Buchung in der DIRS21 IBE.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="d21-render-box" id="quickbook-default-slot">
+          <!-- QuickBook Specific Widget aus Cockpit Screenshot -->
+          <div class="d21-quickbook" id="d21-quickbook" d21-widget-uuid="f80c844e-5ab5-463a-91de-dc47e9aed1b7"></div>
+        </div>
+      </div>
+
+      <div class="widget-footer">
+        <div class="snippet-box">
+          <span id="code-quickbook">&lt;div class="d21-quickbook" d21-widget-uuid="f80c844e-5ab5-463a-91de-dc47e9aed1b7"&gt;&lt;/div&gt;</span>
+        </div>
+        <button class="copy-btn" onclick="copySnippet('code-quickbook')">Code kopieren</button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- WIDGET 2: VERFÜGBARKEITSKALENDER           -->
+    <!-- ========================================== -->
+    <section class="widget-card" id="card-calendar" data-widget="calendar">
+      <div class="widget-header">
+        <div class="widget-title-area">
+          <div class="widget-icon">📅</div>
+          <div>
+            <h2 class="widget-title">2. Verfügbarkeitskalender</h2>
+            <p class="widget-desc">
+              Übersichtskalender zur freien Buchungslage und Preisen über Tage und Monate hinweg.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="d21-render-box">
+          <!-- Verfügbarkeitskalender Specific Widget aus Cockpit Screenshot -->
+          <div class="d21-availabilityCalendar" id="d21-availabilityCalendar" d21-widget-uuid="676964fb-347f-4a64-bed0-2de5a838ff2c"></div>
+        </div>
+      </div>
+
+      <div class="widget-footer">
+        <div class="snippet-box">
+          <span id="code-calendar">&lt;div class="d21-availabilityCalendar" d21-widget-uuid="676964fb-347f-4a64-bed0-2de5a838ff2c"&gt;&lt;/div&gt;</span>
+        </div>
+        <button class="copy-btn" onclick="copySnippet('code-calendar')">Code kopieren</button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- WIDGET 3: ZIMMERLISTE (ROOM LIST)          -->
+    <!-- ========================================== -->
+    <section class="widget-card" id="card-roomlist" data-widget="roomlist">
+      <div class="widget-header">
+        <div class="widget-title-area">
+          <div class="widget-icon">🛏️</div>
+          <div>
+            <h2 class="widget-title">3. Zimmerliste (Room List)</h2>
+            <p class="widget-desc">
+              Interaktive Darstellung der Zimmerkategorien mit Bildern, Ausstattungsmerkmalen und Preisen aus DIRS21.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="d21-render-box">
+          <!-- Zimmerliste Specific Widget aus Cockpit Screenshot -->
+          <div class="d21-roomlist d21-roomList" id="d21-roomList" d21-widget-uuid="5740a636-f6fd-412d-a6ea-753e192f951b"></div>
+        </div>
+      </div>
+
+      <div class="widget-footer">
+        <div class="snippet-box">
+          <span id="code-roomlist">&lt;div class="d21-roomlist" d21-widget-uuid="5740a636-f6fd-412d-a6ea-753e192f951b"&gt;&lt;/div&gt;</span>
+        </div>
+        <button class="copy-btn" onclick="copySnippet('code-roomlist')">Code kopieren</button>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- WIDGET 4: ANGEBOTSLISTE (PACKAGE LIST)     -->
+    <!-- ========================================== -->
+    <section class="widget-card" id="card-packagelist" data-widget="packagelist">
+      <div class="widget-header">
+        <div class="widget-title-area">
+          <div class="widget-icon">🎁</div>
+          <div>
+            <h2 class="widget-title">4. Angebotsliste (Package List)</h2>
+            <p class="widget-desc">
+              Pauschalen, Arrangements und saisonale Angebote für Urlauber im Romantik Hotel Zum Lindengarten.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="widget-body">
+        <div class="d21-render-box">
+          <!-- Angebotsliste Specific Widget aus Cockpit Screenshot -->
+          <div class="d21-packagelist d21-packageList" id="d21-packageList" d21-widget-uuid="8ed9d823-d528-40a6-a194-52476e3902c1"></div>
+        </div>
+      </div>
+
+      <div class="widget-footer">
+        <div class="snippet-box">
+          <span id="code-packagelist">&lt;div class="d21-packagelist" d21-widget-uuid="8ed9d823-d528-40a6-a194-52476e3902c1"&gt;&lt;/div&gt;</span>
+        </div>
+        <button class="copy-btn" onclick="copySnippet('code-packagelist')">Code kopieren</button>
+      </div>
+    </section>
+
+    <!-- System Diagnostics & Integrationshinweise -->
+    <section class="diag-drawer">
+      <h3 class="diag-title">
+        <span>🔍</span> Technische Diagnosen &amp; Integrationshinweise
+      </h3>
+      <div class="diag-grid">
+        <div class="diag-item">
+          <strong>Mandanten-Konfiguration</strong>
+          <span id="diag-config-status">Prüfe sessionStorage...</span>
+        </div>
+        <div class="diag-item">
+          <strong>CSS &amp; Styling</strong>
+          <span id="diag-css-status">Lädt DIRS21 V5 Theme...</span>
+        </div>
+        <div class="diag-item">
+          <strong>Aktive Script-Module</strong>
+          <span id="diag-modules-status">Module werden ermittelt...</span>
+        </div>
+        <div class="diag-item">
+          <strong>Protokoll / Host</strong>
+          <span id="diag-protocol-status">Wird ermittelt...</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================================================= -->
+  <!-- 📍 NEUER FAVORIT: FLOATING SIDE WIDGET (RECHTS MITTIG)           -->
+  <!-- ================================================================= -->
+  <div id="floating-side-container" class="floating-qb-target is-idle">
+    <div class="side-widget-header">
+      <div class="side-widget-brand">
+        <span class="side-logo-badge">ZL</span>
+        <div>
+          <div class="side-widget-title">Zimmer buchen</div>
+          <div class="side-widget-sub">Bestpreis direkt im Hotel</div>
+        </div>
+      </div>
+      <button class="dock-close-btn" onclick="setFloatingMode('static')" title="Ausblenden">
+        ✕
+      </button>
+    </div>
+
+    <!-- QuickBook Slot Rechts Mittig -->
+    <div id="side-widget-slot"></div>
+
+    <div class="side-trust-row">
+      <span class="side-trust-pill">
+        <span class="side-trust-dot"></span> Bestpreis-Garantie
+      </span>
+      <span class="side-trust-pill">
+        <span class="side-trust-dot"></span> Sofortbestätigung
+      </span>
+    </div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- OPTION B: FLOATING BOTTOM-DOCK-BAR CONTAINER                      -->
+  <!-- ================================================================= -->
+  <div id="floating-dock-container" class="floating-qb-target is-idle">
+    <div class="dock-top-row">
+      <div class="dock-branding">
+        <span class="hotel-logo-badge" style="width:26px; height:26px; font-size:0.75rem;">ZL</span>
+        <span>Romantik Hotel Zum Lindengarten</span>
+        <span class="dock-gold-badge">Direktbuchung mit Bestpreis</span>
+      </div>
+      <div class="dock-actions">
+        <button class="dock-close-btn" onclick="setFloatingMode('static')" title="Schwebende Leiste schließen">
+          ✕
+        </button>
+      </div>
+    </div>
+    <!-- QuickBook Slot in Dock -->
+    <div id="dock-widget-slot"></div>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- OPTION C: FLOATING MINI-TRIGGER PILL                              -->
+  <!-- ================================================================= -->
+  <button id="floating-pill-trigger" class="floating-qb-target is-idle" onclick="openFloatingDrawer()">
+    <span class="pill-pulse-dot"></span>
+    <span>🛎️ Direkt buchen &amp; Verfügbarkeit</span>
+    <span class="pill-tag-badge">Bestpreis</span>
+  </button>
+
+  <!-- OPTION C: MODAL DRAWER OVERLAY -->
+  <div id="floating-drawer-backdrop" onclick="handleDrawerBackdropClick(event)">
+    <div class="floating-drawer-card" onclick="event.stopPropagation()">
+      <div class="drawer-header">
+        <div class="drawer-title-area">
+          <span class="pill-tag" style="margin-bottom:0.4rem;">Romantik Hotel Zum Lindengarten</span>
+          <h3>Direkt online buchen &amp; Verfügbarkeit prüfen</h3>
+          <p>Wählen Sie Ihre Reisedaten und buchen Sie zum garantierten Bestpreis direkt im Hotel.</p>
+        </div>
+        <button class="drawer-close-btn" onclick="closeFloatingDrawer()" title="Schließen (Esc)">
+          ✕
+        </button>
+      </div>
+
+      <!-- QuickBook Slot in Drawer -->
+      <div id="drawer-widget-slot"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // State management for Floating Mode (Default: 'side' = Rechts Mittig!)
+    let currentMode = 'side'; // 'side' | 'dock' | 'pill' | 'static'
+    let isDrawerOpen = false;
+    let isUserInteracting = false;
+    let scrollTimeout = null;
+
+    // Filter Tabs for Main Cards
+    function switchFilter(category, btnElement) {
+      const cards = document.querySelectorAll('.widget-card');
+      const buttons = document.querySelectorAll('#mainTabGroup .tab-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      if (category === 'all') {
+        cards.forEach(card => card.style.display = 'block');
+      } else {
+        cards.forEach(card => {
+          if (card.dataset.widget === category) {
+            card.style.display = 'block';
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+    }
+
+    // Snippet copy helper
+    function copySnippet(elementId) {
+      const text = document.getElementById(elementId).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Code kopiert:\n' + text);
+      }).catch(err => {
+        prompt('Code kopieren:', text);
+      });
+    }
+
+    // Floating Mode Switching Logic
+    function setFloatingMode(mode) {
+      currentMode = mode;
+
+      const btnSide = document.getElementById('btn-mode-side');
+      const btnDock = document.getElementById('btn-mode-dock');
+      const btnPill = document.getElementById('btn-mode-pill');
+      const btnStatic = document.getElementById('btn-mode-static');
+      
+      const sideContainer = document.getElementById('floating-side-container');
+      const dockContainer = document.getElementById('floating-dock-container');
+      const pillTrigger = document.getElementById('floating-pill-trigger');
+      
+      const defaultSlot = document.getElementById('quickbook-default-slot');
+      const sideSlot = document.getElementById('side-widget-slot');
+      const dockSlot = document.getElementById('dock-widget-slot');
+      const drawerSlot = document.getElementById('drawer-widget-slot');
+      const quickbookEl = document.getElementById('d21-quickbook');
+
+      // Update button active state
+      if (btnSide) btnSide.classList.toggle('active', mode === 'side');
+      if (btnDock) btnDock.classList.toggle('active', mode === 'dock');
+      if (btnPill) btnPill.classList.toggle('active', mode === 'pill');
+      if (btnStatic) btnStatic.classList.toggle('active', mode === 'static');
+
+      // Reset drawer
+      closeFloatingDrawer();
+
+      if (mode === 'side') {
+        // Show Right-Side Widget, Hide others
+        sideContainer.style.display = 'block';
+        dockContainer.style.display = 'none';
+        pillTrigger.style.display = 'none';
+
+        // Move QuickBook into Side Slot
+        if (quickbookEl && sideSlot) {
+          sideSlot.appendChild(quickbookEl);
+        }
+        defaultSlot.innerHTML = `
+          <div class="relocated-notice">
+            <span style="font-size:1.6rem;">📍</span>
+            <h4 style="font-size:1.1rem; color:var(--primary); margin:0.4rem 0;">Rechts-Mittige Platzierung aktiv</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted); max-width:540px; margin:0 auto 1rem;">
+              Das QuickBook-Widget schwebt auf der <strong>rechten Seite mittig</strong> im Blickfeld. Scrollen Sie nach oben oder unten, um das geschmeidige Weggleiten und automatische Wiedereinblenden zu testen!
+            </p>
+            <button class="mode-toggle-btn active" style="margin:0 auto;" onclick="setFloatingMode('static')">
+              Hierher zurücksetzen
+            </button>
+          </div>
+        `;
+      } else if (mode === 'dock') {
+        sideContainer.style.display = 'none';
+        dockContainer.style.display = 'block';
+        pillTrigger.style.display = 'none';
+
+        if (quickbookEl && dockSlot) {
+          dockSlot.appendChild(quickbookEl);
+        }
+        defaultSlot.innerHTML = `
+          <div class="relocated-notice">
+            <span style="font-size:1.5rem;">🚤</span>
+            <h4 style="font-size:1.1rem; color:var(--primary); margin:0.4rem 0;">Option B (Bottom-Dock) ist aktiv</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted); max-width:540px; margin:0 auto 1rem;">
+              Das QuickBook-Widget schwebt am unteren Bildschirmrand.
+            </p>
+            <button class="mode-toggle-btn active" style="margin:0 auto;" onclick="setFloatingMode('side')">
+              Zu Rechts-Mittig wechseln
+            </button>
+          </div>
+        `;
+      } else if (mode === 'pill') {
+        sideContainer.style.display = 'none';
+        dockContainer.style.display = 'none';
+        pillTrigger.style.display = 'flex';
+
+        if (quickbookEl && drawerSlot) {
+          drawerSlot.appendChild(quickbookEl);
+        }
+        defaultSlot.innerHTML = `
+          <div class="relocated-notice">
+            <span style="font-size:1.5rem;">🛎️</span>
+            <h4 style="font-size:1.1rem; color:var(--primary); margin:0.4rem 0;">Option C (Mini-Pill) ist aktiv</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted); max-width:540px; margin:0 auto 1rem;">
+              Klicken Sie rechts unten auf „🛎️ Direkt buchen“.
+            </p>
+            <button class="mode-toggle-btn active" style="margin:0 auto;" onclick="openFloatingDrawer()">
+              Buchungs-Drawer jetzt öffnen
+            </button>
+          </div>
+        `;
+      } else {
+        sideContainer.style.display = 'none';
+        dockContainer.style.display = 'none';
+        pillTrigger.style.display = 'none';
+
+        defaultSlot.innerHTML = '';
+        if (quickbookEl) {
+          defaultSlot.appendChild(quickbookEl);
+        }
+      }
+    }
+
+    // Option C Drawer functions
+    function openFloatingDrawer() {
+      isDrawerOpen = true;
+      const backdrop = document.getElementById('floating-drawer-backdrop');
+      backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeFloatingDrawer() {
+      isDrawerOpen = false;
+      const backdrop = document.getElementById('floating-drawer-backdrop');
+      if (backdrop) backdrop.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleDrawerBackdropClick(e) {
+      if (e.target.id === 'floating-drawer-backdrop') {
+        closeFloatingDrawer();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isDrawerOpen) {
+        closeFloatingDrawer();
+      }
+    });
+
+    // =================================================================
+    // SCROLL-HIDE / IDLE-SHOW SENSOR LOGIC
+    // =================================================================
+    function updateSensorUI(isScrolling) {
+      const chip = document.getElementById('scrollStatusChip');
+      const text = document.getElementById('scrollStatusText');
+      if (!chip || !text) return;
+
+      if (isScrolling) {
+        chip.className = 'sensor-chip scrolling';
+        text.innerText = 'Seite scrollt (Widget ausgeblendet)';
+      } else {
+        chip.className = 'sensor-chip idle';
+        text.innerText = 'Seite steht still (Widget eingeblendet)';
+      }
+    }
+
+    // Interaction guards (don't hide if user is interacting with inputs or hovering)
+    function addGuards(el) {
+      if (!el) return;
+      el.addEventListener('mouseenter', () => { isUserInteracting = true; });
+      el.addEventListener('mouseleave', () => { isUserInteracting = false; });
+      el.addEventListener('focusin', () => { isUserInteracting = true; });
+      el.addEventListener('focusout', () => { isUserInteracting = false; });
+    }
+
+    addGuards(document.getElementById('floating-side-container'));
+    addGuards(document.getElementById('floating-dock-container'));
+
+    window.addEventListener('scroll', () => {
+      if (isUserInteracting || isDrawerOpen) return;
+
+      // 1. Immediately hide targets
+      const targets = document.querySelectorAll('.floating-qb-target');
+      targets.forEach(t => {
+        t.classList.add('is-scrolling');
+        t.classList.remove('is-idle');
+      });
+      updateSensorUI(true);
+
+      // 2. Debounce: after 280ms without scroll, restore visibility
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        targets.forEach(t => {
+          t.classList.remove('is-scrolling');
+          t.classList.add('is-idle');
+        });
+        updateSensorUI(false);
+      }, 300);
+    }, { passive: true });
+
+    // Scroll Simulation Button
+    function simulateScroll() {
+      const current = window.scrollY;
+      const target = current > 400 ? 0 : current + 650;
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }
+
+    // Initialize after DIRS21 SDK mounts
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const dot = document.getElementById('sdkStatusDot');
+        const text = document.getElementById('sdkStatusText');
+        const configItem = document.getElementById('diag-config-status');
+        const cssItem = document.getElementById('diag-css-status');
+        const modItem = document.getElementById('diag-modules-status');
+        const protoItem = document.getElementById('diag-protocol-status');
+
+        protoItem.innerHTML = `<strong>Host:</strong> ${window.location.protocol}//${window.location.host || 'lokale Datei'}`;
+
+        const d21Config = sessionStorage.getItem('d21_config');
+        if (d21Config) {
+          dot.classList.add('ready');
+          text.innerText = 'DIRS21 Live aktiv';
+          configItem.innerHTML = '<strong>Aktiv:</strong> Hotel-Konfiguration geladen';
+        } else {
+          text.innerText = 'Warte auf DIRS21 Server...';
+          configItem.innerHTML = '<strong>Hinweis:</strong> Datenabfrage läuft';
+        }
+
+        // Check CSS
+        const d21Style = document.querySelector('link[href*="v5.widgets.dirs21.de"]') || document.getElementById('d21-widget-style');
+        if (d21Style) {
+          cssItem.innerHTML = '<strong>Geladen:</strong> DIRS21 V5 Theme Stylesheet aktiv';
+        }
+
+        // Check active scripts
+        const scripts = Array.from(document.querySelectorAll('script')).map(s => s.src).filter(s => s && s.includes('dirs21'));
+        if (scripts.length > 0) {
+          modItem.innerHTML = `<strong>${scripts.length} Scripte aktiv:</strong> SDK &amp; Module geladen`;
+        }
+
+        // By default, activate the user's favorite: RECHTS MITTIG!
+        setFloatingMode('side');
+      }, 1600);
+    });
+  </script>
+
+  <!-- ================================================================= -->
+  <!-- DIRS21 CLIENT SDK (Romantik Hotel Zum Lindengarten Client UUID)   -->
+  <!-- Am Ende von <body> platziert, damit alle Ziel-DIVs im DOM existieren! -->
+  <!-- ================================================================= -->
+  <script id="dirs21-sdk" src="https://js-sdk.dirs21.de/7c9366f5-d53f-469f-a694-64492ca05e97" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Romantik Hotel Zum Lindengarten – Urlaub im Zittauer Gebirge</title>
+    <meta name="description" content="Romantik Hotel Zum Lindengarten in Jonsdorf – Urlaub im historisch romantischen Ambiente im Zittauer Gebirge." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- DIRS21 Widgets Theme Stylesheet -->
+    <link rel="stylesheet" href="https://v5.widgets.dirs21.de/style.css?v=1.0.27" />
+
+    <!-- DIRS21 SPA Navigation Shield (verhindert unhandled TypeError in unmountWidget bei React Router Seitenwechsel) -->
+    <script>
+      (function() {
+        var origQuerySelector = Document.prototype.querySelector;
+        Document.prototype.querySelector = function(selector) {
+          var el = origQuerySelector.apply(this, arguments);
+          if (!el && typeof selector === 'string' && selector.indexOf('.d21-') !== -1) {
+            var dummy = document.createElement('div');
+            var match = selector.match(/d21-([0-9a-fA-F-]{36})/);
+            if (match) {
+              dummy.setAttribute('d21-widget-uuid', match[1]);
+            }
+            return dummy;
+          }
+          return el;
+        };
+      })();
+    </script>
+
+    <!-- DIRS21 Sub-Widget Modules vorab laden/registrieren -->
+    <script type="module" src="https://v5.widgets.dirs21.de/availabilityCalendar.js?v=1.0.27"></script>
+    <script type="module" src="https://v5.widgets.dirs21.de/roomList.js?v=1.0.27"></script>
+    <script type="module" src="https://v5.widgets.dirs21.de/quickbook.js?v=1.0.27"></script>
+
+    <!-- DIRS21 Hotel SDK Script -->
+    <script id="dirs21-sdk-script" src="https://js-sdk.dirs21.de/7c9366f5-d53f-469f-a694-64492ca05e97" type="text/javascript" defer></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Startseite immer auf die React-App (index.html) leiten
+  RewriteRule ^$ index.html [L]
+
+  # 2. WordPress REST API an WordPress index.php leiten
+  RewriteRule ^wp-json/(.*)$ index.php [L]
+
+  # 3. WordPress Admin, Logins und WordPress-Ordner durchlassen
+  RewriteRule ^wp-admin - [L]
+  RewriteRule ^wp-login\.php - [L]
+  RewriteRule ^wp-content - [L]
+  RewriteRule ^wp-includes - [L]
+
+  # 4. Physisch existierende Dateien & Ordner direkt ausliefern
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 5. Alle React-Router-Pfade an index.html leiten
+  RewriteRule ^index\.html$ - [L]
+  RewriteRule . /index.html [L]
+</IfModule>

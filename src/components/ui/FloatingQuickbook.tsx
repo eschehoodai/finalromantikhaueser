@@ -67,9 +67,41 @@ export default function FloatingQuickbook() {
     };
   }, [isMobileDrawerOpen]);
 
+  // DIRS21 Render-Trigger: Stellt sicher, dass das Quickbook-Widget sofort und verlässlich gemountet wird
+  useEffect(() => {
+    let timer: ReturnType<typeof setInterval>;
+    let attempts = 0;
+
+    const renderQuickbook = () => {
+      attempts++;
+      const win = window as any;
+      if (win.dirs21 && typeof win.dirs21.render === 'function') {
+        win.dirs21.render();
+      }
+      const qb = document.getElementById('d21-quickbook');
+      if (qb && qb.children.length > 0) {
+        clearInterval(timer);
+      }
+      if (attempts >= 40) {
+        clearInterval(timer);
+      }
+    };
+
+    renderQuickbook();
+    timer = setInterval(renderQuickbook, 200);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
   const openMobileDrawer = () => {
     setIsDismissed(false);
     setIsMobileDrawerOpen(true);
+    const win = window as any;
+    if (win.dirs21 && typeof win.dirs21.render === 'function') {
+      setTimeout(() => win.dirs21.render(), 60);
+    }
   };
 
   const closeMobileDrawer = () => {
@@ -91,6 +123,10 @@ export default function FloatingQuickbook() {
       e.preventDefault();
     }
     setIsDismissed(false);
+    const win = window as any;
+    if (win.dirs21 && typeof win.dirs21.render === 'function') {
+      setTimeout(() => win.dirs21.render(), 60);
+    }
   };
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {

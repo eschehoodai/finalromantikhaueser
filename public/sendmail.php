@@ -171,8 +171,39 @@ $headers[] = 'X-Mailer: PHP/' . phpversion();
 
 $headerStr = implode("\r\n", $headers);
 
-// E-Mail versenden
-$sent = @mail($to, $encodedSubject, $body, $headerStr);
+// E-Mail versenden mit explizitem Envelope-Sender (-f) für Linux/Plesk Postfix
+$additionalParams = '-fbuchung@romantikhaeuser.de';
+$sent = @mail($to, $encodedSubject, $body, $headerStr, $additionalParams);
+
+// Failsafe-Sicherung: Jede Anfrage als geschütztes Backup auf dem Webserver ablegen
+$backupDir = __DIR__ . '/mail_logs';
+if (!is_dir($backupDir)) {
+    @mkdir($backupDir, 0755, true);
+    if (!file_exists($backupDir . '/.htaccess')) {
+        @file_put_contents($backupDir . '/.htaccess', "Require all denied\n");
+    }
+}
+$backupEntry = [
+    'zeit' => $dateStr,
+    'typ' => $formType,
+    'name' => $name,
+    'email' => $email,
+    'telefon' => $phone,
+    'nachricht' => $message,
+    'details' => ($formType === 'buchung' ? [
+        'anreise' => $anreise,
+        'abreise' => $abreise,
+        'erwachsene' => $erwachsene,
+        'kinder' => $kinder
+    ] : null),
+    'ip' => $clientIp,
+    'mail_sent' => (bool)$sent
+];
+@file_put_contents(
+    $backupDir . '/anfragen_' . date('Y-m') . '.log',
+    json_encode($backupEntry, JSON_UNESCAPED_UNICODE) . "\n",
+    FILE_APPEND
+);
 
 // Lokaler Entwicklungsmodus-Fallback:
 // Wenn auf localhost kein SMTP-Server eingerichtet ist (z. B. Windows-Entwicklung):

@@ -18,7 +18,7 @@ export default function Home() {
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="overline">Zittauer Gebirge · Jonsdorf</p>
-          <h1>Urlaub im historisch romantischen Ambiente</h1>
+          <h1>Urlaub im historisch-romantischen Umgebindehaus</h1>
           <p>
             Das kleinste Mittelgebirge Deutschlands lädt Sie in seine reizvolle
             Landschaft zwischen Bergen und Felsen im Dreiländereck

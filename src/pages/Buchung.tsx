@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import FaqAccordion from '../components/ui/FaqAccordion';
 
 export default function Buchung() {
   useScrollReveal();
@@ -395,6 +396,9 @@ export default function Buchung() {
           </div>
         </div>
       </section>
+
+      {/* FAQ AKKORDEON */}
+      <FaqAccordion />
 
       {/* KONTAKT-INFO */}
       <section className="section section-alt">

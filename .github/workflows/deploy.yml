@@ -33,6 +33,24 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR || '/' }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR || '/httpdocs/' }}
           local-dir: ./dist/
           dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            wordpress/**
+            wp-admin/**
+            wp-content/**
+            wp-includes/**
+            wp-config.php
+            wp-load.php
+            wp-login.php
+            wp-settings.php
+            wp-*.php
+            .wp-toolkit/**
+            robots.txt
+            sitemap.xml
+
+

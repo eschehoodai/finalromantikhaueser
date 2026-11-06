@@ -135,7 +135,7 @@ export default function BackgroundMusic() {
   return (
     <audio
       ref={audioRef}
-      src="/musik/musik1.mp3"
+      src="/musik/musik1.mp3?v=2"
       preload="auto"
       playsInline
       style={{ display: 'none' }}

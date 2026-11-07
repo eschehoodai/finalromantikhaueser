@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import FaqAccordion from '../components/ui/FaqAccordion';
+import SEO from '../components/seo/SEO';
 
 export default function Buchung() {
   useScrollReveal();
@@ -81,6 +82,11 @@ export default function Buchung() {
 
   return (
     <main>
+      <SEO
+        title="Online Buchen & Verfügbarkeit"
+        description="Zimmer und Suiten im Romantik Hotel Zum Lindengarten direkt online zum Bestpreis buchen. Verfügbarkeitskalender, Buchungssystem und persönliche Anfrage."
+        canonicalPath="/buchung"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div

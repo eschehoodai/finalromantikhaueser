@@ -1,10 +1,16 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import SEO from '../components/seo/SEO';
 
 export default function Impressum() {
   useScrollReveal();
 
   return (
     <main>
+      <SEO
+        title="Impressum"
+        description="Impressum und rechtliche Anbieterkennzeichnung der Lindengarten Kunath GmbH – Romantik Hotel Zum Lindengarten in Kurort Jonsdorf."
+        canonicalPath="/impressum"
+      />
       {/* HERO */}
       <section className="hero hero-sub" style={{ minHeight: '40vh' }}>
         <div

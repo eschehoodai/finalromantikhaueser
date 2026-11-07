@@ -53,51 +53,51 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`nav-wrap ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-inner">
-          <Link to="/" className="nav-logo" onClick={closeMobileMenu}>
+      <header className={`nav-wrap ${scrolled ? 'scrolled' : ''}`} role="banner">
+        <nav className="nav-inner" aria-label="Hauptnavigation">
+          <Link to="/" className="nav-logo" onClick={closeMobileMenu} title="Romantik Hotel Zum Lindengarten - Startseite">
             Romantik Hotel <span>Lindengarten</span>
           </Link>
 
           {/* Desktop Navigation Links */}
           <ul className="nav-links">
             <li>
-              <NavLink to="/" end>
+              <NavLink to="/" end title="Startseite & Übersicht">
                 Start
               </NavLink>
             </li>
             <li>
-              <NavLink to="/romantik-hotel">
+              <NavLink to="/romantik-hotel" title="Romantik-Hotel & Zimmer">
                 Romantik-Hotel
               </NavLink>
             </li>
             <li>
-              <NavLink to="/bauernhaus">
+              <NavLink to="/bauernhaus" title="Historisches Bauernhaus Am Lindengarten">
                 Bauernhaus
               </NavLink>
             </li>
             <li>
-              <NavLink to="/restaurant">
+              <NavLink to="/restaurant" title="Unser Restaurant & Kaminzimmer">
                 Restaurant
               </NavLink>
             </li>
             <li>
-              <NavLink to="/arrangements">
+              <NavLink to="/arrangements" title="Angebote & Arrangements">
                 Arrangements
               </NavLink>
             </li>
             <li>
-              <NavLink to="/umgebung">
+              <NavLink to="/umgebung" title="Umgebung & Ausflugsziele Zittauer Gebirge">
                 Umgebung
               </NavLink>
             </li>
             <li>
-              <NavLink to="/buchung">
+              <NavLink to="/buchung" title="Zimmer online buchen & Verfügbarkeit">
                 Buchung
               </NavLink>
             </li>
             <li>
-              <NavLink to="/kontakt">
+              <NavLink to="/kontakt" title="Kontakt & Anfahrt">
                 Kontakt
               </NavLink>
             </li>
@@ -115,8 +115,8 @@ export default function Navbar() {
             <span></span>
             <span></span>
           </button>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Dedizierter Mobile Drawer */}
       <aside
@@ -146,46 +146,46 @@ export default function Navbar() {
           </div>
 
           {/* Navigation Links */}
-          <nav className="mobile-drawer-nav">
+          <nav className="mobile-drawer-nav" aria-label="Mobile Navigation">
             <ul className="mobile-nav-list">
               <li>
                 <NavLink to="/" end onClick={closeMobileMenu}>
-                  <span>Start</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/romantik-hotel" onClick={closeMobileMenu}>
-                  <span>Romantik-Hotel</span>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/bauernhaus" onClick={closeMobileMenu}>
-                  <span>Bauernhaus</span>
+                  <span>Startseite</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/restaurant" onClick={closeMobileMenu}>
-                  <span>Restaurant</span>
+                  <span>Unser Restaurant</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/arrangements" onClick={closeMobileMenu}>
-                  <span>Arrangements</span>
+                  <span>Angebote &amp; Arrangements</span>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/umgebung" onClick={closeMobileMenu}>
-                  <span>Umgebung</span>
+                <NavLink to="/romantik-hotel" onClick={closeMobileMenu}>
+                  <span>Romantik-Hotel &amp; Zimmer</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/bauernhaus" onClick={closeMobileMenu}>
+                  <span>Bauernhaus Am Lindengarten</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/buchung" onClick={closeMobileMenu}>
-                  <span>Buchung</span>
+                  <span>Online Buchen</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/umgebung" onClick={closeMobileMenu}>
+                  <span>Umgebung &amp; Ausflüge</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/kontakt" onClick={closeMobileMenu}>
-                  <span>Kontakt</span>
+                  <span>Kontakt &amp; Anfahrt</span>
                 </NavLink>
               </li>
             </ul>

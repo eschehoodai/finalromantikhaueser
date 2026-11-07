@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Lightbox, { type LightboxImage } from '../components/ui/Lightbox';
+import SEO from '../components/seo/SEO';
 
 const galleryImages: LightboxImage[] = [
   { src: '/bilder/romantik-hotel-abend.jpg', alt: 'Hotel am Abend' },
@@ -10,7 +11,7 @@ const galleryImages: LightboxImage[] = [
   { src: '/bilder/romantik-hotel-oldtimer-treffen.jpg', alt: 'Oldtimer-Treffen' },
   { src: '/bilder/romantik-hotel-restaurant.jpg', alt: 'Restaurant' },
   {
-    src: '/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.jpg',
+    src: '/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.webp',
     alt: 'Hochzeitszimmer',
   },
   { src: '/bilder/hotelseite_2.jpg', alt: 'Zimmer' },
@@ -30,13 +31,19 @@ export default function RomantikHotel() {
 
   return (
     <main>
+      <SEO
+        title="Romantik-Hotel & Zimmer"
+        description="Urlaub im historischen Umgebindehaus: Komfortable Romantikzimmer, Suiten und herzliche Gastlichkeit im Romantik Hotel Zum Lindengarten in Jonsdorf."
+        canonicalPath="/romantik-hotel"
+        type="hotel"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div
           className="hero-bg"
           style={{
             backgroundImage:
-              "url('/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.jpg')",
+              "url('/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.webp')",
           }}
         />
         <div className="hero-overlay" />

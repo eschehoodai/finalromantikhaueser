@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Lightbox, { type LightboxImage } from '../components/ui/Lightbox';
+import SEO from '../components/seo/SEO';
 
 const umgebungImages: LightboxImage[] = [
   { src: '/bilder/umgebung_berglandschaft.jpg', alt: 'Bergpanorama' },
@@ -20,6 +21,11 @@ export default function Umgebung() {
 
   return (
     <main>
+      <SEO
+        title="Zittauer Gebirge & Ausflugsziele"
+        description="Aktivurlaub und Erholung im Naturpark Zittauer Gebirge: Entdecken Sie Kurort Jonsdorf, Felsenstädte, Wanderwege und das Dreiländereck."
+        canonicalPath="/umgebung"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div

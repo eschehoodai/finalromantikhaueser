@@ -5,6 +5,7 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import BackgroundMusic from './components/layout/BackgroundMusic';
 import FloatingQuickbook from './components/ui/FloatingQuickbook';
 import ConsentManager from './components/ui/ConsentManager';
+import StructuredData from './components/seo/StructuredData';
 import { CookieProvider } from './context/CookieContext';
 
 import Home from './pages/Home';
@@ -51,6 +52,7 @@ export default function App() {
         <FloatingQuickbook />
         <BackgroundMusic />
         <ConsentManager />
+        <StructuredData />
       </div>
     </CookieProvider>
   );

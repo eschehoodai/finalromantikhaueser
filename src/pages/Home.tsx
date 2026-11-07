@@ -1,18 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import SEO from '../components/seo/SEO';
 
 export default function Home() {
   useScrollReveal();
 
   return (
     <main>
+      <SEO
+        title="Romantik Hotel Zum Lindengarten – Urlaub im Zittauer Gebirge"
+        description="Romantik Hotel & historisches Bauernhaus in Kurort Jonsdorf. Gemütliche Zimmer, feine regionale Gastronomie im Kaminrestaurant und Urlaub im Naturpark Zittauer Gebirge."
+        canonicalPath="/"
+      />
       {/* ========== HERO ========== */}
       <section className="hero">
         <div
           className="hero-bg"
           style={{
             backgroundImage:
-              "url('/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.jpg')",
+              "url('/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.webp')",
           }}
         />
         <div className="hero-overlay" />
@@ -102,7 +108,7 @@ export default function Home() {
             </div>
             <div className="split-img">
               <img
-                src="/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.jpg"
+                src="/bilder/romantik-hotel-lindengarten-zittauer-gebirge-hochzeitszimmer.webp"
                 alt="Romantisches Zimmer im Romantik Hotel"
                 loading="lazy"
               />

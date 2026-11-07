@@ -1,10 +1,16 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import SEO from '../components/seo/SEO';
 
 export default function Datenschutz() {
   useScrollReveal();
 
   return (
     <main>
+      <SEO
+        title="Datenschutzerklärung"
+        description="Datenschutzerklärung der Lindengarten Kunath GmbH: Informationen zur Verarbeitung personenbezogener Daten und Ihren Rechten gemäß DSGVO."
+        canonicalPath="/datenschutz"
+      />
       {/* HERO */}
       <section className="hero hero-sub" style={{ minHeight: '40vh' }}>
         <div

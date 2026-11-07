@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import InteractiveMap from '../components/ui/InteractiveMap';
+import SEO from '../components/seo/SEO';
 
 export default function Kontakt() {
   useScrollReveal();
@@ -52,6 +53,11 @@ export default function Kontakt() {
 
   return (
     <main>
+      <SEO
+        title="Kontakt & Anfahrt"
+        description="Kontakt zum Romantik Hotel Zum Lindengarten in Jonsdorf: Telefon +49 35844 70654, Anfahrt im Zittauer Gebirge und direktes Kontaktformular."
+        canonicalPath="/kontakt"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div

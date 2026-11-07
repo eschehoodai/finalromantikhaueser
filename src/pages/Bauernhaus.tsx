@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Lightbox, { type LightboxImage } from '../components/ui/Lightbox';
+import SEO from '../components/seo/SEO';
 
 const allBauernhausImages: LightboxImage[] = [
   // Galerie 1
@@ -41,6 +42,12 @@ export default function Bauernhaus() {
 
   return (
     <main>
+      <SEO
+        title="Bauernhaus Am Lindengarten"
+        description="Historisches Bauernhaus in Kurort Jonsdorf: Romantische Zimmer, Maisonette-Suiten und entspannte Erholung im traditionellen Umgebindestil."
+        canonicalPath="/bauernhaus"
+        type="hotel"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div

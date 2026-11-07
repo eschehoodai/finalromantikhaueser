@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import SEO from '../components/seo/SEO';
 
 interface Arrangement {
   overline: string;
@@ -76,6 +77,11 @@ export default function Arrangements() {
 
   return (
     <main>
+      <SEO
+        title="Angebote & Arrangements"
+        description="Exklusive Urlaubs-Arrangements im Romantik Hotel Zum Lindengarten: Romantisches Wochenende zu Zweit, Kurzurlaub, Feiertagspakete & Wellness im Zittauer Gebirge."
+        canonicalPath="/arrangements"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div

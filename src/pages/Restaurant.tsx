@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import Lightbox, { type LightboxImage } from '../components/ui/Lightbox';
+import SEO from '../components/seo/SEO';
 
 const restaurantImages: LightboxImage[] = [
   { src: '/bilder/restaurant-biergarten.jpg', alt: 'Biergarten' },
@@ -21,6 +22,11 @@ export default function Restaurant() {
 
   return (
     <main>
+      <SEO
+        title="Unser Restaurant & Kaminzimmer"
+        description="Heimische Spezialitäten, gemütliches Kaminzimmer und idyllischer Biergarten im Luftkurort Jonsdorf. Täglich geöffnet für kulinarischen Genuss und Feierlichkeiten."
+        canonicalPath="/restaurant"
+      />
       {/* HERO */}
       <section className="hero hero-sub">
         <div

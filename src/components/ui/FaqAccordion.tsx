@@ -17,7 +17,7 @@ const FAQ_ITEMS: FaqItem[] = [
     id: 'dreilaendereck-ausfluege',
     question: 'Welche Ausflugsziele im Dreiländereck und im Naturpark Zittauer Gebirge liegen in direkter Nähe?',
     answer:
-      'Unser Haus liegt im Herzen des Dreiländerecks: Die Grenzen zu Tschechien (z. B. Jeschken, Liberec, Isergebirge) und Polen (Bogatynia, Riesengebirge) erreichen Sie in wenigen Autominuten. Direkt vor der Haustür in Jonsdorf laden die Nonnenfelsen, die Jonsdorfer Felsenstadt, das Schmetterlingshaus sowie die berühmte Burg- und Klosterruine Oybin zu unvergesslichen Wanderungen und Ausflügen ein.',
+      'Unser Haus liegt im Herzen des Dreiländerecks: Die Grenzen zu Tschechien (z. B. Jeschken, Liberec, Isergebirge) und Polen (Bogatynia, Riesengebirge) erreichen Sie in wenigen Autominuten. Direkt vor der Haustür in Jonsdorf laden die Nonnenfelsen, die Jonsdorfer Felsenstadt, das Reptilienhaus sowie die berühmte Burg- und Klosterruine Oybin zu unvergesslichen Wanderungen und Ausflügen ein.',
   },
   {
     id: 'umgebindehaus-tradition',

@@ -90,7 +90,7 @@ export default function Umgebung() {
                 Zünftige reiche Beschäftigungsmöglichkeiten bietet Jonsdorf auch
                 im Winter mit gut gespurten Loipen, Lausche-Abfahrt und dem 5
                 Minuten entfernten Eissportzentrum. Seit 2004 bietet das
-                Schmetterlingshaus eine neue Attraktion in Jonsdorf.
+                Reptilienhaus eine neue Attraktion in Jonsdorf.
               </p>
             </div>
             <div className="split-img">
@@ -189,7 +189,7 @@ export default function Umgebung() {
                 <path d="M8 14s1.5 2 4 2 4-2 4-2" />
                 <path d="M9 9h.01M15 9h.01" />
               </svg>
-              <span>Schmetterlingshaus</span>
+              <span>Reptilienhaus</span>
             </div>
             <div className="feature-item">
               <svg

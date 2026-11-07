@@ -35,7 +35,7 @@ const FAQ_ITEMS: FaqItem[] = [
     id: 'buchung-checkin',
     question: 'Wie gestalten sich Check-in, Check-out und die Buchungsmöglichkeiten?',
     answer:
-      'Sie können rund um die Uhr direkt über unseren Online-Verfügbarkeitskalender buchen, unser Anfrageformular nutzen oder uns telefonisch unter 035844 70654 kontaktieren. Der Check-in ist ab 14:00 Uhr möglich (Spätanreise nach vorheriger Vereinbarung), der Check-out bis 11:00 Uhr. Bei einer Direktbuchung garantieren wir Ihnen den besten Preis sowie persönliche Beratung für Ihre Urlaubstage.',
+      'Sie können rund um die Uhr direkt über unseren Online-Verfügbarkeitskalender buchen, unser Anfrageformular nutzen oder uns telefonisch unter 035844 70654 kontaktieren. Der Check-in ist ab 15:00 Uhr möglich (Spätanreise nach vorheriger Vereinbarung), der Check-out bis 11:00 Uhr. Bei einer Direktbuchung garantieren wir Ihnen den besten Preis sowie persönliche Beratung für Ihre Urlaubstage.',
   },
 ];
 

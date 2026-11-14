@@ -2439,4 +2439,275 @@ input[type="number"].form-control {
   }
 }
 
+/* ============================================================
+   BETRIEBSRUHE / URLAUBS-MODAL ("The Modern Heirloom")
+   ============================================================ */
+
+.vacation-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10020;
+  background: rgba(20, 22, 12, 0.62);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  animation: vacationBackdropFade 0.4s var(--ease-elegant) forwards;
+}
+
+@keyframes vacationBackdropFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.vacation-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbe9 100%);
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  border-top: 3px solid var(--primary-container, #c5a059);
+  border-radius: 14px;
+  padding: clamp(1.75rem, 4vw, 2.65rem) clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 0 24px 64px rgba(18, 19, 10, 0.35), 0 0 24px rgba(197, 160, 89, 0.14);
+  text-align: center;
+  animation: vacationCardSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes vacationCardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.vacation-modal-close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(119, 90, 25, 0.07);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  color: var(--on-surface-variant, #4a4a3a);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  z-index: 3;
+}
+
+.vacation-modal-close:hover {
+  background: var(--primary, #775a19);
+  color: #ffffff;
+  border-color: var(--primary, #775a19);
+  transform: scale(1.06);
+}
+
+.vacation-modal-header {
+  margin-bottom: 1.35rem;
+}
+
+.vacation-modal-emblem {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 0.85rem;
+  border-radius: 50%;
+  background: rgba(197, 160, 89, 0.14);
+  border: 1px solid var(--primary-container, #c5a059);
+  color: var(--primary, #775a19);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.03em;
+}
+
+.vacation-modal-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 1.95rem);
+  color: var(--on-background, #1b1d0e);
+  margin-top: 0.3rem;
+  line-height: 1.2;
+}
+
+.vacation-modal-body {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: var(--on-surface-variant, #4a4a3a);
+}
+
+.vacation-modal-salutation {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.08rem;
+  color: var(--on-surface, #1b1d0e);
+  margin-bottom: 0.45rem;
+}
+
+.vacation-modal-text {
+  max-width: 440px;
+  margin: 0 auto 1.15rem;
+}
+
+.vacation-modal-text strong {
+  color: var(--on-surface, #1b1d0e);
+  font-weight: 600;
+}
+
+.vacation-modal-reopen-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  background: rgba(197, 160, 89, 0.12);
+  border: 1px solid rgba(197, 160, 89, 0.4);
+  border-radius: 10px;
+  padding: 0.8rem 1.1rem;
+  margin-bottom: 1.15rem;
+  color: var(--on-surface, #1b1d0e);
+  font-size: 0.95rem;
+}
+
+.vacation-reopen-icon {
+  color: var(--primary, #775a19);
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.vacation-modal-booking-note {
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid rgba(209, 197, 180, 0.65);
+  border-left: 3px solid var(--primary-container, #c5a059);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  box-shadow: 0 4px 16px rgba(27, 29, 14, 0.03);
+}
+
+.vacation-note-heading {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--primary, #775a19);
+  margin-bottom: 0.4rem;
+}
+
+.vacation-modal-booking-note strong {
+  color: var(--on-surface, #1b1d0e);
+}
+
+.vacation-modal-signoff {
+  font-size: 0.92rem;
+  color: var(--on-surface-variant, #4a4a3a);
+  margin-bottom: 1.4rem;
+}
+
+.vacation-modal-signoff strong {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--on-surface, #1b1d0e);
+}
+
+.vacation-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.vacation-btn-book,
+.vacation-btn-continue {
+  padding: 0.78rem 1.5rem;
+  font-size: 0.85rem;
+}
+
+/* Dezenter Reopen-Badge unten links */
+.vacation-reopen-badge {
+  position: fixed;
+  bottom: 22px;
+  left: 22px;
+  z-index: 985;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 160, 89, 0.55);
+  color: var(--on-surface, #1b1d0e);
+  padding: 0.55rem 1rem;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(27, 29, 14, 0.12);
+  transition: all 0.25s var(--ease-elegant);
+}
+
+.vacation-reopen-badge:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary, #775a19);
+  box-shadow: 0 12px 28px rgba(27, 29, 14, 0.18);
+  color: var(--primary, #775a19);
+}
+
+.vacation-reopen-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-container, #c5a059);
+  box-shadow: 0 0 8px rgba(197, 160, 89, 0.8);
+}
+
+@media (max-width: 640px) {
+  .vacation-modal-card {
+    padding: 1.6rem 1.25rem 1.4rem;
+  }
+
+  .vacation-modal-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .vacation-btn-book,
+  .vacation-btn-continue {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .vacation-reopen-badge {
+    bottom: 74px;
+    left: 16px;
+    font-size: 0.76rem;
+    padding: 0.45rem 0.85rem;
+  }
+}
+
+
 
